@@ -3,6 +3,7 @@ hello/Application.class
 hello/SimpleCrawlerService.class
 hello/ProxyDAO.class
 hello/GreetingController.class
+hello/ProxyCleanerEngine.class
 hello/Greeting.class
 hello/MyProxyServer.class
 hello/ProxyDAOImpl.class

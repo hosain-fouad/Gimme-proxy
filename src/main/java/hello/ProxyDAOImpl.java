@@ -45,4 +45,9 @@ public class ProxyDAOImpl implements ProxyDAO {
     public List<MyProxyServer> getAllProxiesByType() {
         return null;
     }
+
+    @Override
+    public void removeProxy(MyProxyServer proxy) {
+        sessionFactory.getCurrentSession().delete(proxy);
+    }
 }

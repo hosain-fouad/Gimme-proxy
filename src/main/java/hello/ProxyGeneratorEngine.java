@@ -26,12 +26,14 @@ public class ProxyGeneratorEngine extends Thread{
     @Autowired
     private ProxyDAO proxyDAO;
 
+    private static final int SLEEP_TIME = 5 * 60 * 1000;
+    
     @Override
     public void run() {
         while(true){
             try {
                 updateProxyList("http://proxylist.hidemyass.com/");
-                sleep(5000);
+                sleep(SLEEP_TIME);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ParserConfigurationException e) {
@@ -42,7 +44,7 @@ public class ProxyGeneratorEngine extends Thread{
                 e.printStackTrace();
             }
             catch (Exception e){
-                System.err.print("{error}" + e);
+                System.err.print("[error in ProxyGeneratorEngine]" + e);
             }
         }
     }
@@ -76,7 +78,9 @@ public class ProxyGeneratorEngine extends Thread{
         }
 
         for(MyProxyServer proxy : proxies){
-            proxyDAO.add(proxy);
+            if(!proxyDAO.isExist(proxy)){
+                proxyDAO.add(proxy);
+            }
         }
         return proxies;
     }

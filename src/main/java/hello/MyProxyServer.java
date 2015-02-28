@@ -98,4 +98,9 @@ public class MyProxyServer {
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+
+    @Override
+    public String toString(){
+        return this.getId();
+    }
 }

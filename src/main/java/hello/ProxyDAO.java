@@ -12,5 +12,5 @@ public interface ProxyDAO {
     public List<MyProxyServer> getAllProxies();
     public List<MyProxyServer> getAllProxiesByCountry();
     public List<MyProxyServer> getAllProxiesByType();
-
+    void removeProxy(MyProxyServer proxy);
 }
