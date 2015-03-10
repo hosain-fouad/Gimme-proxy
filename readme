@@ -1,4 +1,4 @@
-Give Me a Proxy
+hey dude, Gimme a Proxy
 Is a service that gives you up to date proxies, it is mainly gets those proxies data by crawling "hideMyAss.com" (those guys are doing great job in their home page to make it hard to scrap it :) )
 
 This service has two mainly two background jobs, one to get new proxy servers data and the other one is to wipe all bad proxies.
