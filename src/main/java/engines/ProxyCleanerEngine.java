@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.net.Socket;
 
+import java.util.logging.Logger;
+
 /**
  * Created by hosainfathelbab on 2/24/15.
  */
@@ -18,6 +20,8 @@ public class ProxyCleanerEngine extends Thread{
 
     @Autowired
     private ProxyDAO proxyDAO;
+
+    private final static Logger LOG = Logger.getLogger(ProxyCleanerEngine.class.getName());
 
     private static final int SLEEP_TIME = 10 * 60 * 1000;
 
@@ -29,7 +33,7 @@ public class ProxyCleanerEngine extends Thread{
                 sleep(SLEEP_TIME);
             }
             catch (Exception e){
-                System.err.println("[error in ProxyCleanerEngine] " + e);
+                LOG.severe("[error in ProxyCleanerEngine] " + e);
             }
         }
     }
@@ -50,7 +54,7 @@ public class ProxyCleanerEngine extends Thread{
             socket = new Socket(proxy.getIp(), proxy.getPort());
             reachable = true;
         } catch (Exception e) {
-            System.err.println("Proxy " + proxy + " is not reachable.");
+            LOG.info("Proxy " + proxy + " is not reachable.");
         } finally {
             if (socket != null) try { socket.close(); } catch(IOException e) {}
         }

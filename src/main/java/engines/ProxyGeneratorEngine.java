@@ -16,6 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by hosainfathelbab on 2/24/15.
@@ -27,6 +28,8 @@ public class ProxyGeneratorEngine extends Thread{
 
     @Autowired
     private ProxyDAO proxyDAO;
+
+    private final static Logger LOG = Logger.getLogger(ProxyGeneratorEngine.class.getName());
 
     private static final int SLEEP_TIME = 5 * 60 * 1000;
 
@@ -46,7 +49,7 @@ public class ProxyGeneratorEngine extends Thread{
                 e.printStackTrace();
             }
             catch (Exception e){
-                System.err.println("[error in ProxyGeneratorEngine] " + e);
+                LOG.severe("[error in ProxyGeneratorEngine] " + e);
             }
         }
     }
